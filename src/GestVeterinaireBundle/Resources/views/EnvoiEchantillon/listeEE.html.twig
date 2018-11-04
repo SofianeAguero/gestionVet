@@ -1,0 +1,58 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent()}} Liste des Envois d'échantillon
+{% endblock %}
+
+{% block entete_page %}
+<div class="wrapper">
+	<section id="breadcrumb" class="hoc clear"> 
+		<!-- ################################################################################################ -->
+		<ul>
+		    <li><a href="#">Page d'accueil</a></li>
+		    <li><a href="#">Liste des Envois d'échantillon</a></li>
+	  	</ul>
+	  	<!-- ################################################################################################ -->
+	  	<h6 class="heading">Liste des Envois d'échantillon</h6>
+	  	<!-- ################################################################################################ -->
+	</section>
+</div>         
+{% endblock %}
+
+{% block body %}
+<div class="content three_quarter">
+  <h1>Toutes les Commandes</h1>
+  <div class="scrollable">
+    <table>
+      <thead>
+        <tr>
+          <th>Date de la demande d'envoi</th>
+          <th>Date de la livraison</th>
+          <th>Nombre d'échantillons envoyés</th>
+          <th>Libelle du produit</th>
+          <th>Tel du vétérinaire</th>
+        </tr>
+      </thead>
+      <tbody>
+      	{% for envoiEchantillon in lesEE %}
+        <tr>
+          <td><a href="{{ path('gest_veterinaire_aff_unEnvoiEchantillon', {'id':envoiEchantillon.id}) }}">{{envoiEchantillon.DateDemande|date("d/m/Y")}}</a></td>
+          <td><a href="{{ path('gest_veterinaire_aff_unEnvoiEchantillon', {'id':envoiEchantillon.id}) }}">{{envoiEchantillon.DateLivraison|date("d/m/Y")}}</a></td>
+          <td><a href="{{ path('gest_veterinaire_aff_unEnvoiEchantillon', {'id':envoiEchantillon.id}) }}">{{envoiEchantillon.QteLivree}}</a></td>
+          <td><a href="{{ path('gest_veterinaire_aff_unEnvoiEchantillon', {'id':envoiEchantillon.id}) }}">{{envoiEchantillon.LeProduitVeterinaire.LibelleProduit}}</a></td>
+          <td><a href="{{ path('gest_veterinaire_aff_unEnvoiEchantillon', {'id':envoiEchantillon.id}) }}">{{envoiEchantillon.LeVeterinaire.TelVete}}</a></td>
+        </tr>
+        {% else %}
+        <tr>
+          <td>Actuellement</td>
+          <td>Aucun</td>
+          <td>Envoi</td>
+          <td>D'échantillion</td>
+          <td>Enregistré</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,93 @@
+<div class="content three_quarter">
+  	<form method="post">
+  		{% if uneCom is defined %}
+			<div class="form-group">
+				<label class="control-label col-sm-5" for="dateCommande">Date de la commande :</label>
+				<div class="col-sm-10">
+					<input type="date" class="form-control" name="dateCommande" id="dateCommande" value="{{uneCom.DateCommande|date('Y-m-d')}}">
+				</div>
+			</div>
+		{% endif %}
+
+		<div class="form-group">
+			<label class="control-label col-sm-5" for="dateLivraisonSouhaitee">Livraison souhaitée à la date :</label>
+			<div class="col-sm-10">
+				<input type="date" class="form-control" name="dateLivraisonSouhaitee" id="dateLivraisonSouhaitee" {% if uneCom is defined %} value="{{uneCom.DateLivraisonSouhaitee|date('Y-m-d')}}" {% endif %}>
+			</div>
+		</div>
+		
+		<!-- Si c'est l'affichage d'une commande -->
+		{% if uneCom is defined %}
+		{% for produitVeterinaire in commandeProduit %}
+		<div class="form-group">
+			<label class="control-label col-sm-5" for="choixProduit">Le produit :</label>
+			<div class="col-sm-10">
+				<select name="choixProduit" class="form-control" required>
+                	<option value ="{{produitVeterinaire.LeProduitVeterinaire.Id}}">{{produitVeterinaire.LeProduitVeterinaire.LibelleProduit}}</option>
+					<br />
+					{% for prod in lesProduits %}
+						<option value ="{{prod.Id}}">{{prod.LibelleProduit}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+		{% endfor %}
+		<!-- Sinon -->
+		{% else %}
+		<div class="form-group">
+			<label class="control-label col-sm-5" for="choixProduit">Le produit :</label>
+			<div class="col-sm-10">
+				<select name="choixProduit" class="form-control" required>
+                	<option value="">-- Choisissez -- </option>
+                	{% for prod in lesProduits %}
+						<option value ="{{prod.Id}}">{{prod.LibelleProduit}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+		{% endif %}
+
+		<!-- Si c'est l'affichage d'une commande -->
+		{% if uneCom is defined %}
+		{% for produitVeterinaire in commandeProduit %}
+		<div class="form-group">
+		  <label class="control-label col-sm-2" for="qteCommandee">Quantité commandée :</label>
+		  <div class="col-sm-10">
+		    <input type="number" class="form-control" name="qteCommandee" id="qteCommandee" value="{{produitVeterinaire.QteCommandee}}">
+		  </div>
+		</div>
+		{% endfor %}
+		<!-- Sinon -->
+		{% else %}
+		<div class="form-group">
+		  <label class="control-label col-sm-2" for="qteCommandee">Quantité commandée :</label>
+		  <div class="col-sm-10">
+		    <input type="number" class="form-control" name="qteCommandee" id="qteCommandee">
+		  </div>
+		</div>
+		{% endif %}
+
+		<div class="form-group">
+			<label class="control-label col-sm-5" for="choixVeterinaire">Le vétérinaire :</label>
+			<div class="col-sm-10">
+				<select name="choixVeterinaire" class="form-control" required>
+					{% if uneCom is defined %}
+						<option value ="{{uneCom.LeVeterinaire.Id}}">{{uneCom.LeVeterinaire.MailVete}}</option>
+					{% else %}
+		            	<option value="">-- Choisissez -- </option>
+		            {% endif %}
+
+					{% for vet in lesVeterinaires %}
+						<option value ="{{vet.Id}}">{{vet.MailVete}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-10">
+				<button type="submit" class="btn btn-info btn-block">Valider</button>
+			</div>
+		</div>
+	</form>
+</div>

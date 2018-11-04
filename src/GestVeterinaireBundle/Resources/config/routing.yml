@@ -1,0 +1,127 @@
+gest_veterinaire_ajou_com:
+    path:     /ajoutCommande
+    defaults: { _controller: GestVeterinaireBundle:Commande:ajoutCommande }
+
+gest_veterinaire_aff_listeCommande:
+    path:     /listeCommande
+    defaults: { _controller: GestVeterinaireBundle:Commande:listeCommande }
+
+gest_veterinaire_aff_listeVeterinaire:
+    path:     /listeVeterinaire
+    defaults: { _controller: GestVeterinaireBundle:Veterinaire:listeVeterinaire }
+
+gest_veterinaire_aff_listecommandeEEVeterinaire:
+    path:     /listeVet/listeComEE/{id}
+    defaults: { _controller: GestVeterinaireBundle:Veterinaire:listeCommandeVeterinaire, id : 1 }
+    requirements:
+        id: \d+
+
+gest_veterinaire_aff_listeProduit:
+    path:     /listeProduit
+    defaults: { _controller: GestVeterinaireBundle:ProduitVeterinaire:listeProduit }
+
+# // ROUTING COMMANDE \\ #
+gest_veterinaire_aff_listecommandeEEProduit:
+    path:     /listeProd/listeComEE/{id}
+    defaults: { _controller: GestVeterinaireBundle:ProduitVeterinaire:listeCommandeProduit, id : 1 }
+    requirements:
+        id: \d+
+
+gest_veterinaire_aff_unecommande:
+    path:     /listeCommande/laCommande/{id}
+    defaults: { _controller: GestVeterinaireBundle:Commande:laCommande, id : 1 }
+    requirements:
+        id: \d+
+
+gest_veterinaire_modifiercommande:
+    path:     /listeCommande/laCommande/modif/{id}
+    defaults: { _controller: GestVeterinaireBundle:Commande:modifier, id : 1 }
+    requirements:
+        id: \d+
+
+gest_veterinaire_supprimercommande:
+    path:     /listeCommande/laCommande/suppres/{id}
+    defaults: { _controller: GestVeterinaireBundle:Commande:supprimer, id : 1 }
+    requirements:
+        id: \d+
+
+# // ROUTING ECHANTILLON \\ #
+gest_veterinaire_ajou_envoiEchantillon:
+    path:     /ajoutEnvoiEnvoiEchantillon
+    defaults: { _controller: GestVeterinaireBundle:EnvoiEchantillon:ajoutEnvoiEchantillon }
+
+gest_veterinaire_aff_listeEnvoiEchantillon:
+    path:     /listeEnvoiEchantillon
+    defaults: { _controller: GestVeterinaireBundle:EnvoiEchantillon:listeEnvoiEchantillon }
+
+gest_veterinaire_aff_unEnvoiEchantillon:
+    path:     /listeEnvoiEchantillon/lEnvoiEchantillon/{id}
+    defaults: { _controller: GestVeterinaireBundle:EnvoiEchantillon:lEnvoiEchantillon, id : 1 }
+    requirements:
+        id: \d+
+
+gest_veterinaire_modifierEnvoiEchantillon:
+    path:     /listeEnvoiEchantillon/lEchantillon/modif/{id}
+    defaults: { _controller: GestVeterinaireBundle:EnvoiEchantillon:modifierEnvoiEchantillon, id : 1 }
+    requirements:
+        id: \d+
+
+gest_veterinaire_supprimerEnvoiEchantillon:
+    path:     /listeEnvoiEchantillon/lEnvoiEchantillon/suppres/{id}
+    defaults: { _controller: GestVeterinaireBundle:EnvoiEchantillon:supprimerEnvoiEchantillon, id : 1 }
+    requirements:
+        id: \d+
+
+# // ROUTING DELEGUE \\ #
+gest_veterinaire_ajout_Delegueveto:
+    path:     /ajoutDelegueVeterinaire
+    defaults: { _controller: GestVeterinaireBundle:DelegueVeterinaire:ajouter }
+
+gest_veterinaire_aff_listeDelegueVeto:
+    path:     /listeDelegueVeterinaire
+    defaults: { _controller: GestVeterinaireBundle:DelegueVeterinaire:listeVeterinaire }
+
+gest_veterinaire_aff_unDelegueVeterinaire:
+    path:     /listeDelegueVeterinaire/leDelegueVeterinaire/{id}
+    defaults: { _controller: GestVeterinaireBundle:DelegueVeterinaire:leVeterinaire, id : 1 }
+    requirements:
+        id: \d+
+
+gest_veterinaire_modifierDelegueVeterinaire:
+    path:     /listeDelegueVeterinaire/leDelegueVeterinaire/modif/{id}
+    defaults: { _controller: GestVeterinaireBundle:DelegueVeterinaire:modifier, id : 1 }
+    requirements:
+        id: \d+
+
+gest_veterinaire_supprimerDelegueVeterinaire:
+    path:     /listeDelegueVeterinaire/leDelegueVeterinaire/suppres/{id}
+    defaults: { _controller: GestVeterinaireBundle:DelegueVeterinaire:supprimer, id : 1 }
+    requirements:
+        id: \d+
+
+# // ROUTING REGION \\ #
+gest_veterinaire_ajout_Region:
+    path:     /ajoutRegion
+    defaults: { _controller: GestVeterinaireBundle:Region:ajouter }
+
+gest_veterinaire_aff_listeRegion:
+    path:     /listeRegion
+    defaults: { _controller: GestVeterinaireBundle:Region:listeRegion }
+
+gest_veterinaire_aff_uneRegion:
+    path:     /listeRegion/laRegion/{id}
+    defaults: { _controller: GestVeterinaireBundle:Region:laRegion, id : 1 }
+    requirements:
+        id: \d+
+
+gest_veterinaire_modifierRegion:
+    path:     /listeRegion/laRegion/modif/{id}
+    defaults: { _controller: GestVeterinaireBundle:Region:modifier, id : 1 }
+    requirements:
+        id: \d+
+
+gest_veterinaire_supprimerRegion:
+    path:     /listeRegion/laRegion/suppres/{id}
+    defaults: { _controller: GestVeterinaireBundle:Region:supprimer, id : 1 }
+    requirements:
+        id: \d+

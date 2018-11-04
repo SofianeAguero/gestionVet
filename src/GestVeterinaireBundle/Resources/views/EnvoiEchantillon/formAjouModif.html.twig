@@ -1,0 +1,70 @@
+<div class="content three_quarter">
+	<div>
+	  <form method="post">
+	  	<!-- Si c'est l'affichage d'un envoi d'échantillon -->
+	  	{% if unEE is defined %}
+			<div class="form-group">
+				<label class="control-label col-sm-5" for="dateDemande">Date de la demande d'envoi:</label>
+				<div class="col-sm-10">
+					<input type="date" class="form-control" name="dateDemande" id="dateDemande" value="{{unEE.DateDemande|date('Y-m-d')}}">
+				</div>
+			</div>
+		{% endif %}
+		<!-- Fin de la condition -->
+
+		<div class="form-group">
+			<label class="control-label col-sm-5" for="dateLivraison">Date de la livraison :</label>
+			<div class="col-sm-10">
+				<input type="date" class="form-control" name="dateLivraison" id="dateLivraison" {% if unEE is defined %} value="{{unEE.DateLivraison|date('Y-m-d')}}" {% endif %}>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-sm-5" for="qteLivree">Nombre d'échantillons :</label>
+			<div class="col-sm-10">
+				<input type="number" class="form-control" name="qteLivree" id="qteLivree" {% if unEE is defined %} value="{{unEE.QteLivree}}" {% endif %}>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-sm-5" for="choixProduit">Le produit :</label>
+			<div class="col-sm-10">
+				<select name="choixProduit" class="form-control" required>
+					{% if unEE is defined %}
+						<option value ="{{unEE.LeProduitVeterinaire.Id}}">{{unEE.LeProduitVeterinaire.LibelleProduit}}</option>
+					{% else %}
+		            	<option value="">-- Choisissez -- </option>
+		            {% endif %}
+
+					{% for prod in lesProduits %}
+						<option value ="{{prod.Id}}">{{prod.LibelleProduit}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label col-sm-5" for="choixVeterinaire">Le vétérinaire :</label>
+			<div class="col-sm-10">
+				<select name="choixVeterinaire" class="form-control" required>
+					{% if unEE is defined %}
+						<option value ="{{unEE.LeVeterinaire.Id}}">{{unEE.LeVeterinaire.MailVete}}</option>
+					{% else %}
+		            	<option value="">-- Choisissez -- </option>
+		            {% endif %}
+
+					{% for vet in lesVeterinaires %}
+						<option value ="{{vet.Id}}">{{vet.MailVete}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-10">
+				<button type="submit" class="btn btn-info btn-block">Valider</button>
+			</div>
+		</div>
+	</form>
+	</div>
+</div>

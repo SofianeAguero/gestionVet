@@ -1,0 +1,15 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	{{ parent()}} - Page d'accueil
+{% endblock %}
+
+{% block entete_page %}
+	<h2>Modification d'un delegue {{unDele.id}}</h2>
+
+	{{ include ('@GestVeterinaire/Delegue/formAjout.html.twig')}}
+
+	<p>
+		<a href="{{ path('gest_veterinaire_aff_unDelegueVeterinaire', {'id':unDele.id}) }}">Annulation de la modification : Retour au delegue</a>
+	</p>
+{% endblock %}

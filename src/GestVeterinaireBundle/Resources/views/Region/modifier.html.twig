@@ -1,0 +1,17 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	{{ parent()}} - Page d'accueil
+{% endblock %}
+
+{% block entete_page %}
+	<h2>Modification d'une region {{uneRegion.id}}</h2>
+
+	{{ include ('@GestVeterinaire/Region/formAjout.html.twig')}}
+
+	
+	<a href="{{ path('gest_veterinaire_aff_uneRegion', {'id':uneRegion.id}) }}" class="btn btn-danger">
+			<i class="glyphicon glyphicon-trash"></i>
+			Annulation de la modification : Retour au Region
+		</a>
+{% endblock %}

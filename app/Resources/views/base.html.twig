@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}VT RIN AIR{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/gestveterinaire/layout/styles/layout.css') }}" rel="stylesheet" type="text/css" media="all" />
+
+        <link rel="stylesheet" href="{{ asset('bundles/gestveterinaire/css/bootstrap-grid.min.css') }}" rel="stylesheet" />
+
+        <link rel="stylesheet" href="{{ asset('bundles/gestveterinaire/css/bootstrap-reboot.min.css') }}" rel="stylesheet" />
+
+        <link rel="stylesheet" href="{{ asset('bundles/gestveterinaire/css/bootstrap.min.css') }}" rel="stylesheet" />
+
+        <link rel="stylesheet" href="{{ asset('bundles/gestveterinaire/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
+        {% endblock %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body id="top">
+        <!-- ################################################################################################ -->
+        <!-- ################################################################################################ -->
+        <!-- ################################################################################################ -->
+        <!-- Top Background Image Wrapper -->
+        <div class="bgded overlay"> 
+            <!-- ########################################################################################## -->
+            <!-- ########################################################################################## -->
+            <!-- ########################################################################################## -->
+            <div class="wrapper row1">
+                <header id="header" class="hoc clear"> 
+                    <!-- ##################################################################################### -->
+                    <div id="logo" class="fl_left">
+                        <h1><a href="../index.html">VT RIN AIR</a></h1>
+                    </div>
+                    <!-- ##################################################################################### -->
+                    <nav id="mainav" class="fl_right">
+                        <ul class="clear">
+                          <li><a href="../index.html">Page d'accueil</a></li>
+                          <li class="active"><a class="drop" href="#">Consultation des listes</a>
+                            <ul>
+                             <!--  <li class="active"><a href="{{ path('gest_veterinaire_aff_listeCommande') }}">Liste des Commandes</a></li>
+                              <li><a href="{{ path('gest_veterinaire_aff_listeEnvoiEchantillon') }}">Liste des Envois d'échantillon</a></li> -->
+                              <li><a href="{{ path('gest_veterinaire_aff_listeDelegueVeto') }}">Liste des délégués</a></li>
+                              <li><a href="{{ path('gest_veterinaire_aff_listeRegion') }}">Liste des regions</a></li>
+                            </ul>
+                          </li>
+                          <li><a class="drop" href="#">Délégué Vétérinaire</a>
+                            <ul>
+                              <li><a href="{{ path('gest_veterinaire_ajout_Delegueveto') }}">Ajout d'un delegue veterinaire</a></li>
+                              <li><a href="{{ path('gest_veterinaire_aff_listeDelegueVeto') }}">Liste des délégués</a></li>
+                            </ul>
+                          </li>
+                          <li><a class="drop" href="#">Region</a>
+                            <ul>
+                              <li><a href="{{ path('gest_veterinaire_ajout_Region') }}">Ajout d'une region</a></li>
+                              <li><a href="{{ path('gest_veterinaire_aff_listeRegion') }}">Liste des regions</a></li>
+                            </ul>
+                          </li>
+                          <li><a class="drop" href="#">Produit</a>
+                            <ul>
+                              <li><a href="#">Ajout d'un produit</a></li>
+                            </ul>
+                          </li>
+                          <li><a class="drop" href="#">Commande</a>
+                            <ul>
+                              <li><a href="{{ path('gest_veterinaire_ajou_com') }}">Ajout d'un commande</a></li>
+                            </ul>
+                          </li>
+                          <li><a class="drop" href="#">Envoi d'échantillion</a>
+                            <ul>
+                              <li><a href="{{ path('gest_veterinaire_ajou_envoiEchantillon') }}">Ajout d'un envoi d'échantillon</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                    </nav>
+                    <!-- ##################################################################################### -->
+                </header>
+            </div>
+            <!-- ########################################################################################## -->
+            <!-- ########################################################################################## -->
+            <!-- ########################################################################################## -->
+            {% block entete_page %}
+            
+            {% endblock %}
+            <!-- ########################################################################################### -->
+        </div>
+        <!-- End Top Background Image Wrapper -->
+        <!-- ########################################################################################## -->
+        <!-- ########################################################################################## -->
+        <!-- ########################################################################################## -->
+        <div class="wrapper row3">
+            <main class="hoc container clear"> 
+                <!-- main body -->
+                <!-- ###################################################################################### -->
+                <div class="sidebar one_quarter first"> 
+                     <!-- ################################################################################ -->
+                    <!-- <div class="sdb_holder">
+                        <article>
+                            <h6>Notifications</h6>
+                            {# On affiche le(s) message(s) flash dont le nom est "info" #}
+                            {% for message in app.session.flashbag.get('info') %}
+                                <p>{{message}}</p>
+                            {% endfor %}
+                        </article>
+                    </div> -->
+                    <!-- ################################################################################# -->
+                </div>
+                <!-- ########################################################################################## -->
+                <!-- ########################################################################################## -->
+                {% block body %}
+
+                {% endblock %}
+                <!-- ########################################################################################## -->
+                <!-- / main body -->
+                <div class="clear"></div>
+            </main>
+        </div>
+        <!-- ################################################################################################ -->
+        <!-- ################################################################################################ -->
+        <!-- ################################################################################################ -->
+        <div class="wrapper row4">
+          <footer id="footer" class="hoc clear"> 
+            <!-- ############################################################################################## -->
+            <div class="one_half first">
+
+            </div>
+            <div class="one_quarter">
+
+            </div>
+            <div class="one_quarter">
+
+            </div>
+            <!-- ############################################################################################## -->
+          </footer>
+        </div>
+        <!-- ################################################################################################ -->
+        <!-- ################################################################################################ -->
+        <!-- ################################################################################################ -->
+        <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
+        <script src="{{ asset('bundles/gestveterinaire/layout/scripts/jquery.min.js') }}"></script>
+        {% block javascripts %}
+        <script src="{{ asset('bundles/gestveterinaire/layout/scripts/jquery.backtotop.js') }}"></script>
+        <script src="{{ asset('bundles/gestveterinaire/layout/scripts/jquery.mobilemenu.js') }}"></script>
+
+        <script src="{{ asset('bundles/gestveterinaire/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('bundles/gestveterinaire/js/bootstrap.min.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

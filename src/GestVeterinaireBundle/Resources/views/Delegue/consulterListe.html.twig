@@ -1,0 +1,56 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent()}} Liste des delegues
+{% endblock %}
+
+{% block entete_page %}
+<div class="wrapper">
+	<section id="breadcrumb" class="hoc clear"> 
+		<!-- ################################################################################################ -->
+		<ul>
+		    <li><a href="#">Page d'accueil</a></li>
+		    <li><a href="#">Liste des delegues</a></li>
+	  	</ul>
+	  	<!-- ################################################################################################ -->
+	  	<h6 class="heading">Liste des delegues</h6>
+	  	<!-- ################################################################################################ -->
+	</section>
+</div>         
+{% endblock %}
+
+{% block body %}
+<div class="content three_quarter">
+  <h1>Toutes les delegues</h1>
+  <div class="scrollable">
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>Tel</th>
+          <th>Mail</th>
+          <th>Region</th>
+        </tr>
+      </thead>
+      <tbody>
+      	{% for dele in lesDeles %}
+        <tr>
+          <td><a href="{{ path('gest_veterinaire_aff_unDelegueVeterinaire', {'id':dele.id}) }}">{{dele.NomDelegue}}</a></td>
+          <td><a href="{{ path('gest_veterinaire_aff_unDelegueVeterinaire', {'id':dele.id}) }}">{{dele.PrenomDelegue}}</a></td>
+          <td><a href="{{ path('gest_veterinaire_aff_unDelegueVeterinaire', {'id':dele.id}) }}">{{dele.TelDelegue}}</a></td>
+          <td><a href="{{ path('gest_veterinaire_aff_unDelegueVeterinaire', {'id':dele.id}) }}">{{dele.MailDelegue}}</a></td>
+          <td><a href="{{ path('gest_veterinaire_aff_unDelegueVeterinaire', {'id':dele.id}) }}">{{dele.LaRegion.LibelleRegion}}</a></td>
+        </tr>
+        {% else %}
+        <tr>
+          <td>Aucun delegue</td>
+          <td>Enregistrée</td>
+          <td>Actuellement</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

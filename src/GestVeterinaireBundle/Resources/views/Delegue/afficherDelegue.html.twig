@@ -1,0 +1,90 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	{{ parent()}} - Consultation d'un delegue
+{% endblock %}
+
+
+{% block entete_page %}
+<div class="wrapper">
+	<section id="breadcrumb" class="hoc clear"> 
+		<!-- ################################################################################################ -->
+		<ul>
+		    <li><a href="#">Page d'accueil</a></li>
+		    <li><a href="#">Un delegue</a></li>
+	  	</ul>
+	  	<!-- ################################################################################################ -->
+	  	<h6 class="heading">Information du delegue : {{unDele.NomDelegue}}</h6>
+	  	<!-- ################################################################################################ -->
+	</section>
+</div>         
+{% endblock %}
+
+{% block body %}
+
+		<div class="col-sm-12" align="center">
+			<div>    
+		        
+		        <div class="row" id="coordonnees">
+		            <div class="col-sm-7">
+		                <table class="table">
+		                    <tbody><br>
+		                        <tr>
+		                            <th scope="row">Nom</th>
+		                            <td> {{unDele.NomDelegue}}</td>
+		                        </tr>
+		                        <tr>
+		                            <th scope="row">Prénom</th>
+		                           	<td>{{unDele.PrenomDelegue}}</td>
+		                        </tr>
+		                        <tr>
+		                            <th scope="row">Phone / Tel.</th>
+		                            <td> {{unDele.TelDelegue}}</td>
+		                        </tr>
+		                        <tr>
+		                            <th scope="row">Email</th>
+		                            <td> {{unDele.MailDelegue}}</td>
+		                        </tr>
+		                        <tr>
+		                            <th scope="row">Région</th>
+		                            <td> {{unDele.LaRegion.LibelleRegion}}</td>
+		                        </tr>
+		                        <tr>
+		                            <th scope="row">Spécialités</th>
+		                            <td>
+			                            <table>
+			                            	<tr>
+			       								{% for spe in unDele.lesCategorieEspeces %}
+				                            		<td>{{spe.libelleEspece}}</td>
+				                            	{% endfor %}
+			                            	</tr>
+			                            </table>
+		                            </td>
+								</tr>
+		                    </tbody>
+		                </table>
+		                <a href="{{ path('gest_veterinaire_modifierDelegueVeterinaire', {'id':unDele.id}) }}" class="btn btn-default">
+						<i class="glyphicon glyphicon-edit"></i>
+						Modifier le delegue
+						</a>&nbsp;&nbsp;
+
+					<a href="{{ path('gest_veterinaire_supprimerDelegueVeterinaire', {'id':unDele.id}) }}" class="btn btn-danger">
+			<i class="glyphicon glyphicon-trash"></i>
+			Supprimer le delegue
+		</a>
+
+		<a href="{{ path('gest_veterinaire_aff_listeDelegueVeto') }}" class="btn btn-default">
+			<i class="glyphicon glyphicon-chevron-left"></i>
+			Retour à la liste
+		</a> 
+		            </div>
+		        
+		    
+	
+
+	
+</div>
+</div>
+</div>
+
+{% endblock %}

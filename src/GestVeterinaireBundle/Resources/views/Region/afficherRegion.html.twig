@@ -1,0 +1,49 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}
+	{{ parent()}} - Consultation d'une Region
+{% endblock %}
+
+{% block entete_page %}
+<div class="wrapper">
+	<section id="breadcrumb" class="hoc clear"> 
+		<!-- ################################################################################################ -->
+		<ul>
+		    <li><a href="#">Page d'accueil</a></li>
+		    <li><a href="#">Une Region</a></li>
+	  	</ul>
+	  	<!-- ################################################################################################ -->
+	  	<h6 class="heading">Information de la region : {{uneRegion.libelleRegion}}</h6>
+	  	<!-- ################################################################################################ -->
+	</section>
+</div>         
+{% endblock %}
+
+{% block body %}
+		<div class="col-sm-9" align="center">
+
+	<p>
+		nom : {{uneRegion.libelleRegion}}
+		<br />
+	</p>
+	
+
+	<p>
+		<a href="{{ path('gest_veterinaire_modifierRegion', {'id':uneRegion.id}) }}" class="btn btn-default">
+			<i class="glyphicon glyphicon-edit"></i>
+			Modifier la region
+		</a>&nbsp;&nbsp;
+
+		<a href="{{ path('gest_veterinaire_supprimerRegion', {'id':uneRegion.id}) }}" class="btn btn-danger">
+			<i class="glyphicon glyphicon-trash"></i>
+			Supprimer la region
+		</a>
+
+		<a href="{{ path('gest_veterinaire_aff_listeRegion') }}" class="btn btn-default">
+			<i class="glyphicon glyphicon-chevron-left"></i>
+			Retour à la liste
+		</a> 
+	</p>
+</div>
+
+{% endblock %}

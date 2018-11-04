@@ -1,0 +1,89 @@
+<p>
+    <form method="post">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="nomDelegue">nom : </label>
+        <div class="col-sm-10">
+            <input type="text" pattern="[A-Za-z]{1,25}" title="1 à 25 lettres requis" required="required" class="form-control" id="nomDelegue" name="nomDelegue" placeholder="nom du delegue"
+                   value="{%  if unDele.nomDelegue is defined %}{{ unDele.nomDelegue}}{% endif %}">
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="prenomDelegue">prenom : </label>
+        <div class="col-sm-10">
+            <input type="text" pattern="[A-Za-z]{1,25}" required="required" class="form-control" id="prenomDelegue" name="prenomDelegue" placeholder="prenom du delegue" value="{%  if unDele.prenomDelegue is defined %}{{ unDele.prenomDelegue}}{% endif %}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="telDelegue">tel : </label>
+        <div class="col-sm-10">
+            <input type="tel" title="10 chiffres requis" title="1 à 25 lettres requis" required="required" minlength="10" maxlength="10" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" class="form-control" id="telDelegue" name="telDelegue" placeholder="0651748502" value="{%  if unDele.telDelegue is defined %}{{ unDele.telDelegue}}{% endif %}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="mailDelegue">mail : </label>
+        <div class="col-sm-10">
+            <input type="email" required="required" class="form-control" id="mailDelegue" name="mailDelegue" placeholder="e-mail@mail.fr" value="{%  if unDele.mailDelegue is defined %}{{ unDele.mailDelegue}}{% endif %}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="libelleRegion">region : </label>
+        <div class="col-sm-10">
+            <select style="margin-top: 6px" class="form-control" id="libelleRegion" required="required" name="idRegion" placeholder="region suivie">
+                {% for uneRegion in lesRegions %}
+                    <option {%  if unDele.LaRegion is defined %}{% if uneRegion.id == unDele.LaRegion.id %}selected{% endif %}{% endif %} value="{{ uneRegion.id }}">{{ uneRegion.libelleRegion }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="espece">spe : </label>
+        <div class="col-sm-10">
+            {% if espece is defined %}
+                <select multiple="multiple" style="margin-top: 6px" class="form-control select-checkbox-fa" id="espece" name="espece[]" placeholder="espece suivie">
+                    {% for uneEspece in lesEspeces %}
+                        {% set check = 0 %}
+                        {% for item in espece %}
+                            {% if item.id == uneEspece.id %}
+                                {% set check = 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if check == 1 %}
+                            <option selected value="{{ uneEspece.id }}">{{ uneEspece.libelleEspece }}</option>
+                        {% else %}
+                            <option value="{{ uneEspece.id }}">{{ uneEspece.libelleEspece }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                {% else %}
+                    <select multiple="multiple" style="margin-top: 6px" class="form-control select-checkbox-fa" id="espece" name="espece[]" placeholder="espece suivie">
+                        {% for uneEspece in lesEspeces %}<option value="{{ uneEspece.id }}">{{ uneEspece.libelleEspece }}</option>{% endfor %}
+                    </select>
+            {% endif %}
+
+        </div>
+    </div>
+
+    <br>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btndefault">Valider</button>
+        </div>
+    </div>
+    </form>
+</p>
+
+<!-- ajoutez ce css dans votre fichier css, ceci permet d'afficher les checkbox-->
+<style type="text/css">
+.select-checkbox-fa option::before {
+  font-family: FontAwesome;
+  content: "\f096";
+  width: 1.3em;
+  display: inline-block;
+  margin-left: 2px;
+}
+.select-checkbox-fa option:checked::before {
+  content: "\f046";
+}
+</style>

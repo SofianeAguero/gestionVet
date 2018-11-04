@@ -1,0 +1,73 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent()}} Un envoi d'échantillon
+{% endblock %}
+
+{% block entete_page %}
+<div class="wrapper">
+	<section id="breadcrumb" class="hoc clear"> 
+		<!-- ################################################################################################ -->
+		<ul>
+		    <li><a href="#">Page d'accueil</a></li>
+		    <li><a href="#">Une commande</a></li>
+	  	</ul>
+	  	<!-- ################################################################################################ -->
+	  	<h6 class="heading">Information sur l'envoi d'échantillon numéro  {{unEE.Id}}</h6>
+	  	<!-- ################################################################################################ -->
+	</section>
+</div>         
+{% endblock %}
+{% block body %}
+<div class="content three_quarter">
+	<div class="row">
+		<div class="col-sm-9" align="center">
+			<p>
+				Demande d'envoi effectuée le {{unEE.DateDemande|date("d/m/Y")}}, livré le {{unEE.DateLivraison|date("d/m/Y")}}
+			</p>
+
+			<p>
+				Nombre d'échantillons envoyés : {{unEE.QteLivree}}
+			</p>
+
+			<p>
+				{# On vérifie qu'un produit est bien associé à l'échantillon #}
+
+				{% if unEE.LeProduitVeterinaire is not empty %}
+					<p>Le produit concerné : {{unEE.LeProduitVeterinaire.LibelleProduit}}</p>
+				{% endif %}
+			</p>
+
+			<p>
+				{# On vérifie qu'un vétérinaire est bien associé à l'échantillon #}
+
+				{% if unEE.LeVeterinaire is not empty %}
+					<p>Mail du vétérinaire : {{unEE.LeVeterinaire.MailVete}}</p>
+					<p>Tel du vétérinaire : {{unEE.LeVeterinaire.TelVete}}</p>
+				{% endif %}
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-9" align="center">
+			<div class="btn-group btn-group-justified">
+				<a href="{{ path('gest_veterinaire_modifierEnvoiEchantillon', {'id':unEE.Id}) }}" class="btn btn-warning">
+					<i class="glyphicon glyphicon-edit"></i>
+					Modifier l'envoi d'échantillon
+				</a>
+
+				<a href="{{ path('gest_veterinaire_supprimerEnvoiEchantillon', {'id':unEE.Id}) }}" class="btn btn-danger">
+					<i class="glyphicon glyphicon-trash"></i>
+					Supprimer l'envoi d'échantillon
+				</a>
+
+				<a href="{{ path('gest_veterinaire_aff_listeEnvoiEchantillon') }}" class="btn btn-info">
+					<i class="glyphicon glyphicon-chevron-left"></i>
+					Retour à la liste
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

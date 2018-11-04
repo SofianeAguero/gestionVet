@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent()}} Modification d'un envoi d'échantillon
+{% endblock %}
+
+{% block entete_page %}
+<div class="wrapper">
+	<section id="breadcrumb" class="hoc clear"> 
+		<!-- ################################################################################################ -->
+		<ul>
+		    <li><a href="#">Page d'accueil</a></li>
+		    <li><a href="#">Modification d'un envoi d'échantillon</a></li>
+	  	</ul>
+	  	<!-- ################################################################################################ -->
+	  	<h6 class="heading">Modification de l'envoi d'échantillon numéro {{unEE.id}}</h6>
+	  	<!-- ################################################################################################ -->
+	</section>
+</div>         
+{% endblock %}
+
+{% block body %}
+{{ include ('@GestVeterinaire/EnvoiEchantillon/formAjouModif.html.twig') }}
+
+<div style="margin-left: 45%;">
+	<p>
+		<a class="btn btn-warning" href="{{ path('gest_veterinaire_aff_unEnvoiEchantillon', {'id':unEE.id}) }}">Annulation de la modification</a>
+	</p>
+</div>
+{% endblock %}

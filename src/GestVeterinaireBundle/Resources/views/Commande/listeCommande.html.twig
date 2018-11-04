@@ -1,0 +1,52 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent()}} Liste des Commandes
+{% endblock %}
+
+{% block entete_page %}
+<div class="wrapper">
+	<section id="breadcrumb" class="hoc clear"> 
+		<!-- ################################################################################################ -->
+		<ul>
+		    <li><a href="#">Page d'accueil</a></li>
+		    <li><a href="#">Liste des Commandes</a></li>
+	  	</ul>
+	  	<!-- ################################################################################################ -->
+	  	<h6 class="heading">Liste des Commandes</h6>
+	  	<!-- ################################################################################################ -->
+	</section>
+</div>         
+{% endblock %}
+
+{% block body %}
+<div class="content three_quarter">
+  <h1>Toutes les Commandes</h1>
+  <div class="scrollable">
+    <table>
+      <thead>
+        <tr>
+          <th>Date de la Commande</th>
+          <th>Date de livraison souhaitée</th>
+          <th>Tel du vétérinaire</th>
+        </tr>
+      </thead>
+      <tbody>
+      	{% for com in lesCommandes %}
+        <tr>
+          <td><a href="{{ path('gest_veterinaire_aff_unecommande', {'id':com.id}) }}">{{com.DateCommande|date("d/m/Y")}}</a></td>
+          <td><a href="{{ path('gest_veterinaire_aff_unecommande', {'id':com.id}) }}">{{com.DateLivraisonSouhaitee|date("d/m/Y")}}</a></td>
+          <td><a href="{{ path('gest_veterinaire_aff_unecommande', {'id':com.id}) }}">{{com.LeVeterinaire.TelVete}}</a></td>
+        </tr>
+        {% else %}
+        <tr>
+          <td>Aucune Commande</td>
+          <td>Enregistrée</td>
+          <td>Actuellement</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

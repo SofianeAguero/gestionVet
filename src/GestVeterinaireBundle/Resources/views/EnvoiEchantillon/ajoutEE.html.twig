@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent()}} Ajout d'un envoi d'échantillon
+{% endblock %}
+
+{% block entete_page %}
+<div class="wrapper">
+	<section id="breadcrumb" class="hoc clear"> 
+		<!-- ################################################################################################ -->
+		<ul>
+		    <li><a href="#">Page d'accueil</a></li>
+		    <li><a href="#">Ajout d'un envoi d'échantillon</a></li>
+	  	</ul>
+	  	<!-- ################################################################################################ -->
+	  	<h6 class="heading">Ajout d'un envoi d'échantillon</h6>
+	  	<!-- ################################################################################################ -->
+	</section>
+</div>
+{% endblock %}
+        
+{% block body %}
+{{ include ('@GestVeterinaire/EnvoiEchantillon/formAjouModif.html.twig') }}
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent()}} Suppression d'une region
+{% endblock %}
+{% block entete_page %}
+<div class="wrapper">
+	<section id="breadcrumb" class="hoc clear"> 
+		<!-- ################################################################################################ -->
+		<ul>
+		    <li><a href="#">Page d'accueil</a></li>
+		    <li><a href="#">Suppression d'une region</a></li>
+	  	</ul>
+	  	<!-- ################################################################################################ -->
+
+	  	<h6 class="heading">Suppression d'une region </h6>
+	  	<!-- ################################################################################################ -->
+
+	</section>
+</div>
+{% endblock %}
+{% block body %}
+{% if unDele is defined %}
+<div class="content three_quarter">
+	<div class="row">
+		<div class="col-sm-9" align="center">
+			<p>Impossible de supprimer la region car un delegue y est associé!</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-9" align="center">
+			<div class="btn-group btn-group-justified">
+				<p><a class="btn btn-warning" href="{{ path('gest_veterinaire_aff_listeRegion') }}">retour à la liste</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% else %} 
+<div class="content three_quarter">
+	<div class="row">
+		<div class="col-sm-9" align="center">
+			<p>Etes-vous certain de vouloir supprimer la region {{uneRegion.libelleRegion}} </p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-9" align="center">
+			<div class="btn-group btn-group-justified">
+				<form class="form-group" method="POST">
+					<input class="btn btn-info" type="submit" value="Supprimer">
+				</form>
+				<p><a class="btn btn-warning" href="{{ path('gest_veterinaire_aff_uneRegion', {'id':uneRegion.id}) }}">Annulation de la suppression</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endif %}
+{% endblock %}

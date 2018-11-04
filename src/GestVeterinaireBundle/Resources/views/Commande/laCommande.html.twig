@@ -1,0 +1,86 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent()}} Une commande
+{% endblock %}
+
+{% block entete_page %}
+<div class="wrapper">
+	<section id="breadcrumb" class="hoc clear"> 
+		<!-- ################################################################################################ -->
+		<ul>
+		    <li><a href="#">Page d'accueil</a></li>
+		    <li><a href="#">Une commande</a></li>
+	  	</ul>
+	  	<!-- ################################################################################################ -->
+	  	<h6 class="heading">Information sur la commande numéro  {{uneCom.Id}}</h6>
+	  	<!-- ################################################################################################ -->
+	</section>
+</div>         
+{% endblock %}
+
+{% block body %}
+<div class="content three_quarter">
+	<div class="row">
+		<div class="col-sm-9" align="center">
+			<p>
+				Commande effectuée le {{uneCom.DateCommande|date("d/m/Y")}} pour une livraison souhaitée le {{uneCom.DateLivraisonSouhaitee|date("d/m/Y")}}
+			</p>
+
+			<p>
+				{# On vérifie qu'un produit est bien associé à la commande #}
+
+				
+
+				Le(s) produit(s) concerné(s) :
+				<br />
+				{% for produitVeterinaire in commandeProduit %}
+                {{ produitVeterinaire.LeProduitVeterinaire.LibelleProduit }}
+                {% endfor %}
+
+                <br /><br />
+
+                Quantité(s) commandée(s) :
+                <br />
+                {% for produitVeterinaire in commandeProduit %}
+                {{ produitVeterinaire.QteCommandee }}
+                {% endfor %}
+
+                <br /><br />
+
+				
+			</p>
+
+			<p>
+				{# On vérifie qu'un vétérinaire est bien associé à la commande #}
+
+				{% if uneCom.LeVeterinaire is not empty %}
+					<p>Mail du vétérinaire : {{uneCom.LeVeterinaire.MailVete}}</p>
+					<p>Tel du vétérinaire : {{uneCom.LeVeterinaire.TelVete}}</p>
+				{% endif %}
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-9" align="center">
+			<div class="btn-group btn-group-justified">
+				<a href="{{ path('gest_veterinaire_modifiercommande', {'id':uneCom.Id}) }}" class="btn btn-warning">
+					<i class="glyphicon glyphicon-edit"></i>
+					Modifier la commande
+				</a>
+
+				<a href="{{ path('gest_veterinaire_supprimercommande', {'id':uneCom.Id}) }}" class="btn btn-danger">
+					<i class="glyphicon glyphicon-trash"></i>
+					Supprimer la commande
+				</a>
+
+				<a href="{{ path('gest_veterinaire_aff_listeCommande') }}" class="btn btn-info">
+					<i class="glyphicon glyphicon-chevron-left"></i>
+					Retour à la liste
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent()}} Suppression d'un envoi d'échantillon
+{% endblock %}
+
+{% block entete_page %}
+<div class="wrapper">
+	<section id="breadcrumb" class="hoc clear"> 
+		<!-- ################################################################################################ -->
+		<ul>
+		    <li><a href="#">Page d'accueil</a></li>
+		    <li><a href="#">Suppression d'un envoi d'échantillon</a></li>
+	  	</ul>
+	  	<!-- ################################################################################################ -->
+	  	<h6 class="heading">Suppression de l'envoi d'échantillon numéro {{unEE.Id}}</h6>
+	  	<!-- ################################################################################################ -->
+	</section>
+</div>         
+{% endblock %}
+
+{% block body %}
+<div class="content three_quarter">
+	<div class="row">
+		<div class="col-sm-9" align="center">
+			<p>Etes-vous certain de vouloir supprimer l'envoi d'échantillon effectué le {{unEE.DateDemande|date("d/m/Y")}}, pour une livraison au {{unEE.DateLivraison|date("d/m/Y")}} ?</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-9" align="center">
+			<div class="btn-group btn-group-justified">
+				<form class="form-group" method="POST">
+					<input class="btn btn-info" type="submit" value="Supprimer">
+				</form>
+				<p><a class="btn btn-warning" href="{{ path('gest_veterinaire_aff_unEnvoiEchantillon', {'id':unEE.id}) }}">Annulation de la suppression</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

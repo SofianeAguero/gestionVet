@@ -1,0 +1,51 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+  {{ parent()}} Liste des Delegues
+{% endblock %}
+
+{% block entete_page %}
+<div class="wrapper">
+  <section id="breadcrumb" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <ul>
+        <li><a href="#">Page d'accueil</a></li>
+        <li><a href="#">Liste des délègués vétérérinaires de la region {{uneRegion.libelleRegion}}</a></li>
+      </ul>
+  </section>
+</div>         
+{% endblock %}
+
+{% block body %}
+<div class="content three_quarter">
+  <h2>Tous les delegues de la region {{uneRegion.libelleRegion}}</h2>
+  <div class="scrollable">
+    <table>
+      <thead>
+        <tr>
+           <th>Nom</th>
+           <th>Prenom</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for dele in unDele %}
+        <tr>
+          <td><a href="{{ path('gest_veterinaire_aff_unDelegueVeterinaire', {'id':dele.id}) }}">{{dele.NomDelegue}}</a></td>
+          <td><a href="{{ path('gest_veterinaire_aff_unDelegueVeterinaire', {'id':dele.id}) }}">{{dele.PrenomDelegue}}</a></td>
+        </tr>
+        {% else %}
+        <tr>
+          <td>Aucun delegue</td>
+          <td>Enregistrée</td>
+          <td>Actuellement</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{{ path('gest_veterinaire_aff_listeRegion') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à la liste
+    </a> 
+  </div>
+</div>
+{% endblock %}

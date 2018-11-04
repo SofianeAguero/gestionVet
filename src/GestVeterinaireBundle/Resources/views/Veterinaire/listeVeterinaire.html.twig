@@ -1,0 +1,19 @@
+<h2>Liste des vétérinaires</h2>
+
+<ul>
+	{% for vet in lesVeterinaires %}
+		<li>
+			<a href="#">{{vet.MailVete}} {{vet.TelVete}}</a>
+			<ul>
+				<a href="{{ path('gest_veterinaire_aff_listecommandeEEVeterinaire', {'id':vet.id}) }}">Consultation de toutes les commandes et envois d'échantillion de ce vétérinaire</a>
+			</ul>
+		</li>
+	{% else %}
+		<li>Pas de vétérinaire</li>
+	{% endfor %}
+</ul>
+
+{# On affiche le(s) message(s) flash dont le nom est "info" #}
+{% for message in app.session.flashbag.get('info') %}
+	<p>{{message}}</p>
+{% endfor %}

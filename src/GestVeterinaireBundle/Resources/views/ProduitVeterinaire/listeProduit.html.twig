@@ -1,0 +1,19 @@
+<h2>Liste des produits</h2>
+
+<ul>
+	{% for prod in lesProduits %}
+		<li>
+			<a href="#">{{prod.LibelleProduit}}</a>
+			<ul>
+				<a href="{{ path('gest_veterinaire_aff_listecommandeEEProduit', {'id':prod.id}) }}">Consultation de toutes les commandes et envois d'échantillion de ce produit</a>
+			</ul>
+		</li>
+	{% else %}
+		<li>Pas de produit</li>
+	{% endfor %}
+</ul>
+
+{# On affiche le(s) message(s) flash dont le nom est "info" #}
+{% for message in app.session.flashbag.get('info') %}
+	<p>{{message}}</p>
+{% endfor %}

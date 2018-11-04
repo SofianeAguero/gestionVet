@@ -1,0 +1,70 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	{{ parent()}} Liste des regions
+{% endblock %}
+
+{% block entete_page %}
+<div class="wrapper">
+	<section id="breadcrumb" class="hoc clear"> 
+		<!-- ################################################################################################ -->
+		<ul>
+		    <li><a href="#">Page d'accueil</a></li>
+		    <li><a href="#">Liste des regions</a></li>
+	  	</ul>
+	  	<!-- ################################################################################################ -->
+	  	<h6 class="heading">Liste des regions</h6>
+	  	<!-- ################################################################################################ -->
+	</section>
+</div>         
+{% endblock %}
+
+{% block body %}
+
+<div class="content three_quarter">
+  <form method="post">
+    <h1>Afficher les delegues de la region</h1>
+    <div class="scrollable">
+      <div class="form-group">
+        <label class="control-label col-sm-5" for="choix">Régions :</label>
+        <div class="col-sm-10">
+          <select name="choix" class="form-control" required>
+            {% for regi in lesDeleRegions %}
+              <option value ="{{regi.id}}">{{regi.libelleRegion}}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-info btn-block">Valider</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="content three_quarter">
+  <h1>Liste des regions</h1>
+  <div class="scrollable">
+    <table>
+      <thead>
+        <tr>
+          <th>Nom</th>
+        </tr>
+      </thead>
+      <tbody>
+      	{% for regi in lesDeleRegions %}
+        <tr>
+          <td><a href="{{ path('gest_veterinaire_aff_uneRegion', {'id':regi.id}) }}">{{regi.libelleRegion}}</a></td>
+        </tr>
+        {% else %}
+        <tr>
+          <td>Aucune region</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
